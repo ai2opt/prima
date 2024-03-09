@@ -2,7 +2,7 @@ name: Plot performance profiles for NEWUOA, small
 
 on:
   # Trigger the workflow on push or pull request
-  push:
+  #PUSH:
   pull_request:  # DANGEROUS! MUST be disabled for self-hosted runners!
   # Trigger the workflow by cron. The default time zone of GitHub Actions is UTC.
   # schedule:
@@ -49,9 +49,6 @@ jobs:
           ref: ${{ github.event.inputs.git-ref }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY_ACT }} # This forces checkout to use SSH, not HTTPS
           submodules: recursive
-      - name: Set norma to the last commit to prepare for profiling
-        if: ${{ matrix.competitor == 'norma' }}
-        run: git checkout HEAD^ && cd .development && bash ./archnorma && cd ../ && git checkout -
 
       - name: Miscellaneous setup
         run: bash .github/scripts/misc_setup
