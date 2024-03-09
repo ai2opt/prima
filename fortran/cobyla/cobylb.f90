@@ -378,7 +378,7 @@ do tr = 1, maxtr
     ! Evaluate PREREM, which is the predicted reduction in the merit function.
     ! In theory, PREREM >= 0 and it is 0 iff CPEN = 0 = PREREF. This may not be true numerically.
     prerem = preref + cpen * prerec
-    trfail = (.not. prerem > 1.0E-3 * min(cpen, ONE) * rho)  ! PREREM is tiny/negative or NaN.
+    trfail = (.not. prerem > 1.0E-5 * min(cpen, ONE) * rho)  ! PREREM is tiny/negative or NaN.
 
     if (shortd .or. trfail) then
         ! Reduce DELTA if D is short or D fails to render PREREM > 0. The latter can happen due to
