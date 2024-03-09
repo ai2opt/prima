@@ -15,7 +15,7 @@ module lincob_mod
 !
 ! Started: February 2022
 !
-! Last Modified: Saturday, March 09, 2024 PM05:01:51
+! Last Modified: Saturday, March 09, 2024 PM05:02:25
 !--------------------------------------------------------------------------------------------------!
 
 implicit none
@@ -402,7 +402,7 @@ do tr = 1, maxtr
     ! Set QRED to the reduction of the quadratic model when the move D is made from XOPT. QRED
     ! should be positive. If it is nonpositive due to rounding errors, we will not take this step.
     qred = -quadinc(d, xpt, gopt, pq, hq)  ! QRED = Q(XOPT) - Q(XOPT + D)
-    trfail = (.not. qred > 1.0E-3 * rho**2)  ! QRED is tiny/negative or NaN.
+    trfail = (.not. qred > 1.0E-4 * rho**2)  ! QRED is tiny/negative or NaN.
 
     if (shortd .or. trfail) then
         ! In this case, do nothing but reducing DELTA. Afterward, DELTA < DNORM may occur.
