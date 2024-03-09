@@ -32,9 +32,6 @@ jobs:
         competitor: [classical, archiva, norma]
         with_optim_toolbox: [yes]
         ctol_indicator: [0]
-        exclude:
-          - solver: cobylan
-            with_optim_toolbox: yes
 
     steps:
 
